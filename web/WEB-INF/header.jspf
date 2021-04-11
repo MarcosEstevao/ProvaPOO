@@ -1,4 +1,18 @@
 <%-- any content can be specified here e.g.: --%>
 <header>Marcos Estevão da silva junior</header>
 <%@ page pageEncoding="UTF-8" %>
-<h2>Hello World!</h2>
+<%
+  if(request.getParameter("session.login")!=null){
+      String username = request.getParameter("session.username");
+      session.setAttribute("session.username", username);
+      response.sendRedirect(request.getRequestURI());
+  }else if (request.getParameter("session.login")!=null){
+      session.removeAttribute("session.username");
+      response.sendRedirect(request.getRequestURI());
+  }
+%>
+<h2>Area do usuario </h2>
+<form>
+    <input type ="text" name="session.username"/>
+    <input type ="submit" name ="session.login" value="Entrada"/>
+</form>
