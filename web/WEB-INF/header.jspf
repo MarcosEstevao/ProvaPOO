@@ -12,7 +12,16 @@
   }
 %>
 <h2>Area do usuario </h2>
+<%if(session.getAttribute("session.username") == null) {%>
 <form>
     <input type ="text" name="session.username"/>
     <input type ="submit" name ="session.login" value="Entrada"/>
 </form>
+<%}else{%>
+<form>
+    Bem vindo ao sistema. <%= session.getAttribute("session.username") %>
+    <input type="submit" name="session.logout" value="Sair" />
+    <a href="index.jsp"> INDEX</a>
+    <a href="disciplina.jsp"> DISCIPLINA</a>            
+</form>
+<%}%>
